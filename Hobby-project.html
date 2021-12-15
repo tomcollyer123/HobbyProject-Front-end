@@ -42,7 +42,84 @@
             </div>
           </div>
 
+          <!-- Song name input -->
+          <div class="col-md-4">
+            <div class="title">
+              <label for="title" class="form-label">Title</label>
+              <input type="text" class="form-control" id="title" />
+            </div>
+          </div>
 
+          <!-- Album name input -->
+          <div class="row mb-3">
+              <div class="col-md-4">
+                <div class="albumName">
+                  <label for="albumName" class="form-label">Album name</label>
+                  <input type="text" class="form-control" id="albumName" />
+                </div>
+              </div>
+
+              <!-- Genre input-->
+              <div class="col-md-4">
+                <div class="genre">
+                  <label for="genre" class="form-label">Genre name</label>
+                  <input type="text" class="form-control" id="genre" />
+                </div>
+              </div>
+
+              <!-- Release date input -->
+              <div class="row mb-3">
+                  <div class="col-sm-2">
+                    <div class="releaseDate">
+                      <label for="releaseDate" class="form-label">Release date</label>
+                      <input type="date" class="form-control" id="releaseDate" />
+                    </div>
+                  </div>
+                  <!-- Add to playlist button -->
+                  <div class="row mb-3"></div>
+                  <div class="col-sm-3">
+                    <button type="submit" class="btn btn-warning btn-block mb-3">Add to playlist</button>
+                  </form>
+                  <!-- Delete a song form -->
+                  <section>
+                    <h2>Delete a song</h2>
+                    <form id="deleteForm">
+                      <label for="songId">Id:</label>
+                      <input type="text" name="songId" id="songId">
+                      <button type="submit" class="btn btn-warning btn-block mb-5">Delete</button>
+                    </form>
+                    
+<!-- search bar -->
+      <h2>Search for a song</h2>
+      <form id="findSongForm">
+        <label for="artistId">Artist:</label>
+        <input type="text" name="artistId" id="artistId">
+        <label for="titleId">Title:</label>
+        <input type="text" name="titleId" id="titleId">
+        <label for="albumId">Album:</label>
+        <input type="text" name="albumId" id="albumId">
+        <label for="genreId">Genre:</label>
+        <input type="text" name="genreId" id="genreId">
+        <label for="releaseDateId">Release Date:</label>
+        <input type="date" name="releaseDateId" id="releaseDateId">
+        <button type="submit" class="btn btn-warning btn-block mb-5">Search</button>
+      </form>
+    </section>
+    <section>
+      <h2>Search Results</h2>
+      <div id="getOutput2">
+        <div id="getOutput3">
+          <div id="getOutput4">
+            <div id="getOutput5">
+              <div id="getOutput6"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2>Playlist</h2>
+      <div id="getOutput"></div>
+              
 
 </body>
 
