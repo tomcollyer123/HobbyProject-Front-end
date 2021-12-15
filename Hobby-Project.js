@@ -55,6 +55,46 @@ document.querySelector("#deleteForm").addEventListener("submit", function (event
 });
 
 
+// find by artist request
+const getArtist = () => {
+    axios
+        .get("http://localhost:8080/getByArtist/{artist}")
+        .then(response => {
+            console.log(response);
+            const artist = response.data;
+
+            getOutput.innerHTML = "";
+            for (let song of artist) {
+                const songContainer = document.createElement("div");
+               
+                const songArtistName = document.createElement("p");
+                songArtistName.innerText = `Artist: ${song.artistName}`;
+                songContainer.appendChild(songArtistName);
+
+                const songTitle = document.createElement("p");
+                songTitle.innerText = `Title: ${song.title}`;
+                songContainer.appendChild(songTitle);
+
+                const songAlbumName = document.createElement("p");
+                songAlbumName.innerText = `Album: ${song.albumName}`;
+                songContainer.appendChild(songAlbumName);
+
+                const songGenre = document.createElement("p");
+                songGenre.innerText = `Genre: ${song.genre}`;
+                songContainer.appendChild(songGenre);
+
+                const songReleaseDate = document.createElement("p");
+                songReleaseDate.innerText = `Release date: ${song.releaseDate}`;
+                songContainer.appendChild(songReleaseDate);
+
+
+
+                getOutput2.appendChild(songContainer);
+            }
+        }).catch(err => console.error(err));
+}
+
+
 
 
 
