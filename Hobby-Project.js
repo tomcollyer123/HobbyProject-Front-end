@@ -141,3 +141,49 @@ getTitle();
 
 
 
+// find by album request
+const getAlbum = () => {
+    axios
+        .get("http://localhost:8080/getByAlbum/{album}")
+        .then(response => {
+            console.log(response);
+            const album = response.data;
+
+            getOutput.innerHTML = "";
+            for (let song of album) {
+                const songContainer = document.createElement("div");
+               
+                const songArtistName = document.createElement("p");
+                songArtistName.innerText = `Artist: ${song.artistName}`;
+                songContainer.appendChild(songArtistName);
+
+                const songTitle = document.createElement("p");
+                songTitle.innerText = `Title: ${song.title}`;
+                songContainer.appendChild(songTitle);
+
+                const songAlbumName = document.createElement("p");
+                songAlbumName.innerText = `Album: ${song.albumName}`;
+                songContainer.appendChild(songAlbumName);
+
+                const songGenre = document.createElement("p");
+                songGenre.innerText = `Genre: ${song.genre}`;
+                songContainer.appendChild(songGenre);
+
+                const songReleaseDate = document.createElement("p");
+                songReleaseDate.innerText = `Release date: ${song.releaseDate}`;
+                songContainer.appendChild(songReleaseDate);
+
+
+
+                getOutput4.appendChild(songContainer);
+            }
+        }).catch(err => console.error(err));
+}
+
+getAlbum();
+
+
+
+
+
+
