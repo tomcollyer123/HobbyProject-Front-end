@@ -227,6 +227,49 @@ getGenre();
 
 
 
+// find by release date request
+const getReleaseDate = () => {
+    axios
+        .get("http://localhost:8080/getByReleaseDate/{releaseDate}")
+        .then(response => {
+            console.log(response);
+            const releaseDate = response.data;
+
+            getOutput.innerHTML = "";
+            for (let song of releaseDate) {
+                const songContainer = document.createElement("div");
+               
+                const songArtistName = document.createElement("p");
+                songArtistName.innerText = `Artist: ${song.artistName}`;
+                songContainer.appendChild(songArtistName);
+
+                const songTitle = document.createElement("p");
+                songTitle.innerText = `Title: ${song.title}`;
+                songContainer.appendChild(songTitle);
+
+                const songAlbumName = document.createElement("p");
+                songAlbumName.innerText = `Album: ${song.albumName}`;
+                songContainer.appendChild(songAlbumName);
+
+                const songGenre = document.createElement("p");
+                songGenre.innerText = `Genre: ${song.genre}`;
+                songContainer.appendChild(songGenre);
+
+                const songReleaseDate = document.createElement("p");
+                songReleaseDate.innerText = `Release date: ${song.releaseDate}`;
+                songContainer.appendChild(songReleaseDate);
+
+
+
+                getOutput6.appendChild(songContainer);
+            }
+        }).catch(err => console.error(err));
+}
+
+getReleaseDate();
+
+
+
 
 
 
