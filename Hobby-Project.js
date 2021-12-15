@@ -36,6 +36,25 @@ document.querySelector("#PlaylistForm").addEventListener("submit", function (eve
 
 });
 
+// Delete request
+document.querySelector("#deleteForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const form = this;
+
+    const songId = form.songId.value;
+    axios
+        .delete(`http://localhost:8080/removeSong/${songId}`)
+        .then(res => {
+            console.log(res);
+            form.reset();
+            form.songId.focus();
+            getPlaylist();
+        })
+        .catch(err => console.error(err));
+});
+
+
 
 
 
