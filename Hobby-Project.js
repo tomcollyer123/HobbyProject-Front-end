@@ -1,12 +1,10 @@
 'use strict'
 
 const getOutput = document.querySelector("#getOutput");
-const getOutput2 = document.querySelector("#getOutput2");
-const getOutput3 = document.querySelector("#getOutput3");
-const getOutput4 = document.querySelector("#getOutput4");
-const getOutput5 = document.querySelector("#getOutput5");
-const getOutput6 = document.querySelector("#getOutput6");
 
+
+
+//  Create request
 document.querySelector("#PlaylistForm").addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -23,7 +21,7 @@ document.querySelector("#PlaylistForm").addEventListener("submit", function (eve
 
     console.log("DATA: ", data);
 
-    //  Create request
+
     axios
         .post("http://localhost:8080/createSong", data)
         .then(res => {
@@ -36,281 +34,256 @@ document.querySelector("#PlaylistForm").addEventListener("submit", function (eve
 
 });
 
-// Delete request
-document.querySelector("#deleteForm").addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    const form = this;
-
-    const songId = form.songId.value;
-    axios
-        .delete(`http://localhost:8080/removeSong/${songId}`)
-        .then(res => {
-            console.log(res);
-            form.reset();
-            form.songId.focus();
-            getPlaylist();
-        })
-        .catch(err => console.error(err));
-});
-
-
-// find by artist request
-const getArtist = () => {
-    axios
-        .get("http://localhost:8080/getByArtist/{artist}")
-        .then(response => {
-            console.log(response);
-            const artist = response.data;
-
-            getOutput.innerHTML = "";
-            for (let song of artist) {
-                const songContainer = document.createElement("div");
-               
-                const songArtistName = document.createElement("p");
-                songArtistName.innerText = `Artist: ${song.artistName}`;
-                songContainer.appendChild(songArtistName);
-
-                const songTitle = document.createElement("p");
-                songTitle.innerText = `Title: ${song.title}`;
-                songContainer.appendChild(songTitle);
-
-                const songAlbumName = document.createElement("p");
-                songAlbumName.innerText = `Album: ${song.albumName}`;
-                songContainer.appendChild(songAlbumName);
-
-                const songGenre = document.createElement("p");
-                songGenre.innerText = `Genre: ${song.genre}`;
-                songContainer.appendChild(songGenre);
-
-                const songReleaseDate = document.createElement("p");
-                songReleaseDate.innerText = `Release date: ${song.releaseDate}`;
-                songContainer.appendChild(songReleaseDate);
-
-
-
-                getOutput2.appendChild(songContainer);
-            }
-        }).catch(err => console.error(err));
-}
-getArtist();
-
-// find by title request
-const getTitle = () => {
-    axios
-        .get("http://localhost:8080/getByTitle/{title}")
-        .then(response => {
-            console.log(response);
-            const title = response.data;
-
-            getOutput.innerHTML = "";
-            for (let song of title) {
-                const songContainer = document.createElement("div");
-               
-                const songArtistName = document.createElement("p");
-                songArtistName.innerText = `Artist: ${song.artistName}`;
-                songContainer.appendChild(songArtistName);
-
-                const songTitle = document.createElement("p");
-                songTitle.innerText = `Title: ${song.title}`;
-                songContainer.appendChild(songTitle);
-
-                const songAlbumName = document.createElement("p");
-                songAlbumName.innerText = `Album: ${song.albumName}`;
-                songContainer.appendChild(songAlbumName);
-
-                const songGenre = document.createElement("p");
-                songGenre.innerText = `Genre: ${song.genre}`;
-                songContainer.appendChild(songGenre);
-
-                const songReleaseDate = document.createElement("p");
-                songReleaseDate.innerText = `Release date: ${song.releaseDate}`;
-                songContainer.appendChild(songReleaseDate);
-
-
-
-                getOutput3.appendChild(songContainer);
-            }
-        }).catch(err => console.error(err));
-}
-
-getTitle();
-
-
-
-
-
-
-// find by album request
-const getAlbum = () => {
-    axios
-        .get("http://localhost:8080/getByAlbum/{album}")
-        .then(response => {
-            console.log(response);
-            const album = response.data;
-
-            getOutput.innerHTML = "";
-            for (let song of album) {
-                const songContainer = document.createElement("div");
-               
-                const songArtistName = document.createElement("p");
-                songArtistName.innerText = `Artist: ${song.artistName}`;
-                songContainer.appendChild(songArtistName);
-
-                const songTitle = document.createElement("p");
-                songTitle.innerText = `Title: ${song.title}`;
-                songContainer.appendChild(songTitle);
-
-                const songAlbumName = document.createElement("p");
-                songAlbumName.innerText = `Album: ${song.albumName}`;
-                songContainer.appendChild(songAlbumName);
-
-                const songGenre = document.createElement("p");
-                songGenre.innerText = `Genre: ${song.genre}`;
-                songContainer.appendChild(songGenre);
-
-                const songReleaseDate = document.createElement("p");
-                songReleaseDate.innerText = `Release date: ${song.releaseDate}`;
-                songContainer.appendChild(songReleaseDate);
-
-
-
-                getOutput4.appendChild(songContainer);
-            }
-        }).catch(err => console.error(err));
-}
-
-getAlbum();
-
-
-
-// find by genre request
-const getGenre = () => {
-    axios
-        .get("http://localhost:8080/getByGenre/{genre}")
-        .then(response => {
-            console.log(response);
-            const genre = response.data;
-
-            getOutput.innerHTML = "";
-            for (let song of genre) {
-                const songContainer = document.createElement("div");
-               
-                const songArtistName = document.createElement("p");
-                songArtistName.innerText = `Artist: ${song.artistName}`;
-                songContainer.appendChild(songArtistName);
-
-                const songTitle = document.createElement("p");
-                songTitle.innerText = `Title: ${song.title}`;
-                songContainer.appendChild(songTitle);
-
-                const songAlbumName = document.createElement("p");
-                songAlbumName.innerText = `Album: ${song.albumName}`;
-                songContainer.appendChild(songAlbumName);
-
-                const songGenre = document.createElement("p");
-                songGenre.innerText = `Genre: ${song.genre}`;
-                songContainer.appendChild(songGenre);
-
-                const songReleaseDate = document.createElement("p");
-                songReleaseDate.innerText = `Release date: ${song.releaseDate}`;
-                songContainer.appendChild(songReleaseDate);
-
-
-
-                getOutput5.appendChild(songContainer);
-            }
-        }).catch(err => console.error(err));
-}
-
-getGenre();
-
-
-
-// find by release date request
-const getReleaseDate = () => {
-    axios
-        .get("http://localhost:8080/getByReleaseDate/{releaseDate}")
-        .then(response => {
-            console.log(response);
-            const releaseDate = response.data;
-
-            getOutput.innerHTML = "";
-            for (let song of releaseDate) {
-                const songContainer = document.createElement("div");
-               
-                const songArtistName = document.createElement("p");
-                songArtistName.innerText = `Artist: ${song.artistName}`;
-                songContainer.appendChild(songArtistName);
-
-                const songTitle = document.createElement("p");
-                songTitle.innerText = `Title: ${song.title}`;
-                songContainer.appendChild(songTitle);
-
-                const songAlbumName = document.createElement("p");
-                songAlbumName.innerText = `Album: ${song.albumName}`;
-                songContainer.appendChild(songAlbumName);
-
-                const songGenre = document.createElement("p");
-                songGenre.innerText = `Genre: ${song.genre}`;
-                songContainer.appendChild(songGenre);
-
-                const songReleaseDate = document.createElement("p");
-                songReleaseDate.innerText = `Release date: ${song.releaseDate}`;
-                songContainer.appendChild(songReleaseDate);
-
-
-
-                getOutput6.appendChild(songContainer);
-            }
-        }).catch(err => console.error(err));
-}
-
-getReleaseDate();
-
 
 
 // get all request       
 const getPlaylist = () => {
-
     axios
         .get("http://localhost:8080/getAllSongs")
-        .then(response => {
-            console.log(response);
-            const playlist = response.data;
+        .then(res => {
+            console.log(res);
+            const playlist = res.data;
 
             getOutput.innerHTML = "";
             for (let song of playlist) {
-                const songContainer = document.createElement("div");
+                const songCol = document.createElement("div");
+                songCol.classList.add("col");
 
-                const songArtistName = document.createElement("p");
-                songArtistName.innerText = `Artist: ${song.artistName}`;
-                songContainer.appendChild(songArtistName);
+                const songCard = document.createElement("div");
+                songCard.classList.add("card");
+
+                const songBody = document.createElement("div");
+                songBody.classList.add("card-body");
+
+                const songArtistName = document.createElement("h5");
+                songArtistName.classList.add("card-title");
+                songArtistName.innerText = song.artistName;
+                songBody.appendChild(songArtistName);
 
                 const songTitle = document.createElement("p");
+                songTitle.classList.add("card-text");
                 songTitle.innerText = `Title: ${song.title}`;
-                songContainer.appendChild(songTitle);
+                songBody.appendChild(songTitle);
 
                 const songAlbumName = document.createElement("p");
+                songAlbumName.classList.add("card-text");
                 songAlbumName.innerText = `Album: ${song.albumName}`;
-                songContainer.appendChild(songAlbumName);
+                songBody.appendChild(songAlbumName);
 
                 const songGenre = document.createElement("p");
+                songGenre.classList.add("card-text");
                 songGenre.innerText = `Genre: ${song.genre}`;
-                songContainer.appendChild(songGenre);
+                songBody.appendChild(songGenre);
 
                 const songReleaseDate = document.createElement("p");
+                songReleaseDate.classList.add("card-text");
                 songReleaseDate.innerText = `Release date: ${song.releaseDate}`;
-                songContainer.appendChild(songReleaseDate);
+                songBody.appendChild(songReleaseDate);
 
-                getOutput.appendChild(songContainer);
+                const songDelete = document.createElement("button");
+                songDelete.innerText = "delete";
+                songDelete.classList.add("btn", "btn-danger");
+                songDelete.addEventListener("click", () => {
+                    axios
+                        .delete(`http://localhost:8080/removeSong/${song.id}`)
+                        .then(res => getPlaylist())
+                        .catch(err => console.error(err))
+                });
+                songBody.appendChild(songDelete);
+                songCard.appendChild(songBody);
+                songCol.appendChild(songCard);
+
+                getOutput.appendChild(songCol);
             }
         }).catch(err => console.error(err));
-}
+};
 
 getPlaylist();
 
 
+// Get by ID request
+document.querySelector("#getSongById").addEventListener("submit", function (event) {
+    event.preventDefault();
 
 
+    const form = this;
+    const songId = form.songId.value;
+    axios
+        .get(`http://localhost:8080/getSongById/${songId}`)
+        .then(res => {
+            const trackId = res.data;
+            console.log(res);
+            form.reset();
+            form.songId.focus();
+          
+            getOutput.innerHTML = "";
+               
+                const songCol = document.createElement("div");
+                songCol.classList.add("col");
 
+                const songCard = document.createElement("div");
+                songCard.classList.add("card");
+
+                const songBody = document.createElement("div");
+                songBody.classList.add("card-body");
+
+                const songArtistName = document.createElement("h3");
+                songArtistName.classList.add("card-title");
+                songArtistName.innerText = trackId.artistName;
+                songBody.appendChild(songArtistName);
+
+                const songTitle = document.createElement("p");
+                songTitle.classList.add("card-text");
+                songTitle.innerText = `Title: ${trackId.title}`;
+                songBody.appendChild(songTitle);
+
+                const songAlbumName = document.createElement("p");
+                songAlbumName.classList.add("card-text");
+                songAlbumName.innerText = `Album: ${trackId.albumName}`;
+                songBody.appendChild(songAlbumName);
+
+                const songGenre = document.createElement("p");
+                songGenre.classList.add("card-text");
+                songGenre.innerText = `Genre: ${trackId.genre}`;
+                songBody.appendChild(songGenre);
+
+                const songReleaseDate = document.createElement("p");
+                songReleaseDate.classList.add("card-text");
+                songReleaseDate.innerText = `Release date: ${trackId.releaseDate}`;
+                songBody.appendChild(songReleaseDate);
+
+                songCard.appendChild(songBody);
+                songCol.appendChild(songCard);
+
+                getOutput.appendChild(songCol);
+                console.log(songCol);
+            
+            
+        })
+        .catch(err => console.error(err));
+});  
+      
+document.querySelector("#getSongByTitle").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+// get by title request
+    const form = this;
+    const songTitle = form.songTitle.value;
+    axios
+        .get(`http://localhost:8080/getByTitle/${songTitle}`)
+        .then(res => {
+            const trackTitle = res.data;
+            console.log(res);
+            form.reset();
+            form.songTitle.focus();
+          
+            getOutput.innerHTML = "";
+               
+                const songCol = document.createElement("div");
+                songCol.classList.add("col");
+
+                const songCard = document.createElement("div");
+                songCard.classList.add("card");
+
+                const songBody = document.createElement("div");
+                songBody.classList.add("card-body");
+
+                const songArtistName = document.createElement("h3");
+                songArtistName.classList.add("card-title");
+                songArtistName.innerText = trackTitle.artistName;
+                songBody.appendChild(songArtistName);
+
+                const songTitle = document.createElement("p");
+                songTitle.classList.add("card-text");
+                songTitle.innerText = `Title: ${songTitle.title}`;
+                songBody.appendChild(songTitle);
+
+                const songAlbumName = document.createElement("p");
+                songAlbumName.classList.add("card-text");
+                songAlbumName.innerText = `Album: ${trackTitle.albumName}`;
+                songBody.appendChild(songAlbumName);
+
+                const songGenre = document.createElement("p");
+                songGenre.classList.add("card-text");
+                songGenre.innerText = `Genre: ${trackTitle.genre}`;
+                songBody.appendChild(songGenre);
+
+                const songReleaseDate = document.createElement("p");
+                songReleaseDate.classList.add("card-text");
+                songReleaseDate.innerText = `Release date: ${trackTitle.releaseDate}`;
+                songBody.appendChild(songReleaseDate);
+
+                songCard.appendChild(songBody);
+                songCol.appendChild(songCard);
+
+                getOutput.appendChild(songCol);
+                console.log(songCol);
+            
+            
+        })
+        .catch(err => console.error(err));
+}); 
+// // get by genre request
+// document.querySelector("#getByGenre").addEventListener("submit", function (event) {
+//     event.preventDefault();
+
+
+//     const form = this;
+//     const song = form.song.value;
+   
+//     axios
+//         .get(`http://localhost:8080/getByGenre/${genre}`)
+//         .then(res => {
+//             const songGenre = res.data;
+//             console.log(res);
+//             form.reset();
+//             form.songId.focus();
+
+//             getOutput.innerHTML = "";
+//             for (let genre of song) {
+               
+//                 const songCol = document.createElement("div");
+//                 songCol.classList.add("col");
+
+//                 const songCard = document.createElement("div");
+//                 songCard.classList.add("card");
+
+//                 const songBody = document.createElement("div");
+//                 songBody.classList.add("card-body");
+
+//                 const songArtistName = document.createElement("h3");
+//                 songArtistName.classList.add("card-text");
+//                 songArtistName.innerText = songGenre.artistName;
+//                 songBody.appendChild(songArtistName);
+
+//                 const songTitle = document.createElement("p");
+//                 songTitle.classList.add("card-text");
+//                 songTitle.innerText = `Title: ${songGenre.title}`;
+//                 songBody.appendChild(songTitle);
+
+//                 const songAlbumName = document.createElement("p");
+//                 songAlbumName.classList.add("card-text");
+//                 songAlbumName.innerText = `Album: ${songGenre.albumName}`;
+//                 songBody.appendChild(songAlbumName);
+
+//                 const songGenre = document.createElement("p");
+//                 songGenre.classList.add("card-text");
+//                 songGenre.innerText = `Genre: ${songGenre.genre}`;
+//                 songBody.appendChild(songGenre);
+
+//                 const songReleaseDate = document.createElement("p");
+//                 songReleaseDate.classList.add("card-text");
+//                 songReleaseDate.innerText = `Release date: ${songGenre.releaseDate}`;
+//                 songBody.appendChild(songReleaseDate);
+
+//                 songCard.appendChild(songBody);
+//                 songCol.appendChild(songCard);
+
+//                 getOutput.appendChild(songCol);
+//                 console.log(songCol);
+//             }
+            
+//         })
+//         .catch(err => console.error(err));
+// });
+    
