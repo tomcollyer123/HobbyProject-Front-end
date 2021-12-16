@@ -27,7 +27,10 @@ When using user stories, I try to fill these with as much information as possibl
 ![child tasks](https://user-images.githubusercontent.com/93253032/146449944-a071f456-b612-4822-884e-efcaf86cf2ed.png)
 
 
-The next part of my planning phase was to set up 2 GitHub repositories. I created one for all back-end work and one for all front-end work. Within these 2 repo's I have stuck to the feature branch model. I made an initial commit to the main branch in both repo's and then started my branch models by creating a dev branch initially and then continuing with various other feature branches. I was also able to link my Jira board and my Git Repo's to enable me to do smart commits. 
+The next part of my planning phase was to set up 2 GitHub repositories. I created one for all back-end work and one for all front-end work. Within these 2 repo's I have stuck to the feature branch model. I made an initial commit to the main branch in both repo's and then started my branch models by creating a dev branch initially and then continuing with various other feature branches. I was also able to link my Jira board and my Git Repo's to enable me to do smart commits.
+
+![feature branch model](https://user-images.githubusercontent.com/93253032/146454293-5029f40e-c005-4de9-ab85-798c13476143.png)
+
 
 ## Database
 
