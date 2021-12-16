@@ -35,7 +35,6 @@ document.querySelector("#PlaylistForm").addEventListener("submit", function (eve
 });
 
 
-
 // get all request       
 const getPlaylist = () => {
     axios
@@ -102,7 +101,7 @@ getPlaylist();
 
 
 // Get by ID request
-document.querySelector("#getSongById").addEventListener("submit", function (event) {
+document.querySelector("#songId").addEventListener("submit", function (event) {
     event.preventDefault();
 
 
@@ -151,7 +150,16 @@ document.querySelector("#getSongById").addEventListener("submit", function (even
                 songReleaseDate.classList.add("card-text");
                 songReleaseDate.innerText = `Release date: ${trackId.releaseDate}`;
                 songBody.appendChild(songReleaseDate);
-
+                const songDelete = document.createElement("button");
+                songDelete.innerText = "delete";
+                songDelete.classList.add("btn", "btn-danger");
+                songDelete.addEventListener("click", () => {
+                    axios
+                        .delete(`http://localhost:8080/removeSong/${song.id}`)
+                        .then(res => getPlaylist())
+                        .catch(err => console.error(err))
+                });
+                songBody.appendChild(songDelete);
                 songCard.appendChild(songBody);
                 songCol.appendChild(songCard);
 
@@ -163,7 +171,7 @@ document.querySelector("#getSongById").addEventListener("submit", function (even
         .catch(err => console.error(err));
 });  
       
-document.querySelector("#getSongByTitle").addEventListener("submit", function (event) {
+document.querySelector("#getByTitle").addEventListener("submit", function (event) {
     event.preventDefault();
 
 // get by title request
@@ -171,8 +179,9 @@ document.querySelector("#getSongByTitle").addEventListener("submit", function (e
     const songTitle = form.songTitle.value;
     axios
         .get(`http://localhost:8080/getByTitle/${songTitle}`)
-        .then(res => {
-            const trackTitle = res.data;
+     .then(res => {
+                    
+            const trackTitle = res.data[0];
             console.log(res);
             form.reset();
             form.songTitle.focus();
@@ -195,7 +204,7 @@ document.querySelector("#getSongByTitle").addEventListener("submit", function (e
 
                 const songTitle = document.createElement("p");
                 songTitle.classList.add("card-text");
-                songTitle.innerText = `Title: ${songTitle.title}`;
+                songTitle.innerText = `Title: ${trackTitle.title}`;
                 songBody.appendChild(songTitle);
 
                 const songAlbumName = document.createElement("p");
@@ -212,6 +221,16 @@ document.querySelector("#getSongByTitle").addEventListener("submit", function (e
                 songReleaseDate.classList.add("card-text");
                 songReleaseDate.innerText = `Release date: ${trackTitle.releaseDate}`;
                 songBody.appendChild(songReleaseDate);
+                const songDelete = document.createElement("button");
+                songDelete.innerText = "delete";
+                songDelete.classList.add("btn", "btn-danger");
+                songDelete.addEventListener("click", () => {
+                    axios
+                        .delete(`http://localhost:8080/removeSong/${song.id}`)
+                        .then(res => getPlaylist())
+                        .catch(err => console.error(err))
+                });
+                songBody.appendChild(songDelete);
 
                 songCard.appendChild(songBody);
                 songCol.appendChild(songCard);
@@ -223,67 +242,71 @@ document.querySelector("#getSongByTitle").addEventListener("submit", function (e
         })
         .catch(err => console.error(err));
 }); 
-// // get by genre request
-// document.querySelector("#getByGenre").addEventListener("submit", function (event) {
-//     event.preventDefault();
+           
+           
+// get by genre request
+document.querySelector("#getByGenre").addEventListener("submit", function (event) {
+    event.preventDefault();
 
+      
+    const form = this;
+    const songGenre = form.songGenre.value;
+    axios
+        .get(`http://localhost:8080/getByGenre/${songGenre}`)
+        .then(res => {
+            console.log(res);
+            const playlist = res.data;
 
-//     const form = this;
-//     const song = form.song.value;
-   
-//     axios
-//         .get(`http://localhost:8080/getByGenre/${genre}`)
-//         .then(res => {
-//             const songGenre = res.data;
-//             console.log(res);
-//             form.reset();
-//             form.songId.focus();
+            getOutput.innerHTML = "";
+            for (let song of playlist) {
+                const songCol = document.createElement("div");
+                songCol.classList.add("col");
 
-//             getOutput.innerHTML = "";
-//             for (let genre of song) {
-               
-//                 const songCol = document.createElement("div");
-//                 songCol.classList.add("col");
+                const songCard = document.createElement("div");
+                songCard.classList.add("card");
 
-//                 const songCard = document.createElement("div");
-//                 songCard.classList.add("card");
+                const songBody = document.createElement("div");
+                songBody.classList.add("card-body");
 
-//                 const songBody = document.createElement("div");
-//                 songBody.classList.add("card-body");
+                const songArtistName = document.createElement("h5");
+                songArtistName.classList.add("card-title");
+                songArtistName.innerText = song.artistName;
+                songBody.appendChild(songArtistName);
 
-//                 const songArtistName = document.createElement("h3");
-//                 songArtistName.classList.add("card-text");
-//                 songArtistName.innerText = songGenre.artistName;
-//                 songBody.appendChild(songArtistName);
+                const songTitle = document.createElement("p");
+                songTitle.classList.add("card-text");
+                songTitle.innerText = `Title: ${song.title}`;
+                songBody.appendChild(songTitle);
 
-//                 const songTitle = document.createElement("p");
-//                 songTitle.classList.add("card-text");
-//                 songTitle.innerText = `Title: ${songGenre.title}`;
-//                 songBody.appendChild(songTitle);
+                const songAlbumName = document.createElement("p");
+                songAlbumName.classList.add("card-text");
+                songAlbumName.innerText = `Album: ${song.albumName}`;
+                songBody.appendChild(songAlbumName);
 
-//                 const songAlbumName = document.createElement("p");
-//                 songAlbumName.classList.add("card-text");
-//                 songAlbumName.innerText = `Album: ${songGenre.albumName}`;
-//                 songBody.appendChild(songAlbumName);
+                const songGenre = document.createElement("p");
+                songGenre.classList.add("card-text");
+                songGenre.innerText = `Genre: ${song.genre}`;
+                songBody.appendChild(songGenre);
 
-//                 const songGenre = document.createElement("p");
-//                 songGenre.classList.add("card-text");
-//                 songGenre.innerText = `Genre: ${songGenre.genre}`;
-//                 songBody.appendChild(songGenre);
+                const songReleaseDate = document.createElement("p");
+                songReleaseDate.classList.add("card-text");
+                songReleaseDate.innerText = `Release date: ${song.releaseDate}`;
+                songBody.appendChild(songReleaseDate);
 
-//                 const songReleaseDate = document.createElement("p");
-//                 songReleaseDate.classList.add("card-text");
-//                 songReleaseDate.innerText = `Release date: ${songGenre.releaseDate}`;
-//                 songBody.appendChild(songReleaseDate);
+                const songDelete = document.createElement("button");
+                songDelete.innerText = "delete";
+                songDelete.classList.add("btn", "btn-danger");
+                songDelete.addEventListener("click", () => {
+                    axios
+                        .delete(`http://localhost:8080/removeSong/${song.id}`)
+                        .then(res => getPlaylist())
+                        .catch(err => console.error(err))
+                });
+                songBody.appendChild(songDelete);
+                songCard.appendChild(songBody);
+                songCol.appendChild(songCard);
 
-//                 songCard.appendChild(songBody);
-//                 songCol.appendChild(songCard);
-
-//                 getOutput.appendChild(songCol);
-//                 console.log(songCol);
-//             }
-            
-//         })
-//         .catch(err => console.error(err));
-// });
-    
+                getOutput.appendChild(songCol);
+            }
+        }).catch(err => console.error(err));
+    });

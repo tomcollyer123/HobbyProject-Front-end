@@ -78,59 +78,42 @@
         </form>
 
 
-          <section>
-            <h2>Get by genre</h2>
-            <form id="getSongByGenre">
-              <label for="getSongByGenre">Genre:</label>
-              <input type="text" name="getSongByGenre" id="getSongByGenre">
-              <button type="submit" class="btn btn-warning btn-block mb-5">Search</button>
-            </form>
-
-
-
-          <!-- search bar -->
-          
-          <h2>Search for a song</h2>
-          <br>
-          <div id="search" class="row row-cols-2 row-cols-lg-3 g-5"></div>
-          <form id="findSongForm">
-            
-            <br>
-            <label for="titleId">Title:</label>
-            <input type="text" name="titleId" id="titleId">
-            <br>
-            <label for="albumId">Album:</label>
-            <input type="text" name="albumId" id="albumId">
-            <br>
-            <label for="getByGenre">Genre:</label>
-            <input type="text" name="getByGenre" id="getByGenre">
-            <br>
-            <label for="releaseDateId">Release Date:</label>
-            <input type="date" name="releaseDateId" id="releaseDateId">
-            <br>
+        <section>
+          <h2>Get by genre</h2>
+          <form id="getByGenre">
+            <label for="songGenre">Genre:</label>
+            <input type="text" name="songGenre" id="getByGenre">
             <button type="submit" class="btn btn-warning btn-block mb-5">Search</button>
           </form>
-        </div>
-        </section>
+
+          <h2>Get by ID</h2>
+          <form id="songId">
+            <label for="songId">ID:</label>
+            <input type="text" name="songId" id="songId">
+            <button type="submit" class="btn btn-warning btn-block mb-5">Search</button>
+          </form>
+
+          <h2>Get by Title</h2>
+          <form id="getByTitle">
+            <label for="songTitle">Title:</label>
+            <input type="text" name="songTitle" id="songTitle">
+            <button type="submit" class="btn btn-warning btn-block mb-5">Search</button>
+          </form>
+
+          <!-- search bar -->
+          <form id="findSongForm">
+          </form>
+      </div>
+
       <div class="col">
         <section>
           <h2>Playlist</h2>
           <div id="getOutput" class="row row-cols-2 row-cols-lg-3 g-5"></div>
       </div>
     </div>
-    <form id="getSongById">
-      <label for="songId">Id:</label>
-      <input type="text" name="songId" id="songId">
-      <button type="submit" class="btn btn-warning btn-block mb-5">Search</button>
-      </form>
-      <form id="getSongByTitle">
-        <label for="songTitle">Title:</label>
-        <input type="text" name="songTitle" id="songTitle">
-        <button type="submit" class="btn btn-warning btn-block mb-5">Search</button>
-        </form>
   </main>
 
-  
+
   <br>
   <br>
   <br>
