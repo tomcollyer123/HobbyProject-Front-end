@@ -11,116 +11,203 @@
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <style>
-    .carousel-inner > .item > img,
-    .carousel-inner > .item > a > img {
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    .carousel-inner>.item>img,
+    .carousel-inner>.item>a>img {
       width: 50%;
       margin: auto;
     }
-    </style>
+  </style>
   <h1>Music App</h1>
-  
+
 </head>
 
 <body>
 
   <body style="background: linear-gradient(to right, #bed9f5, #13b9e2, #6858f8);"></body>
-  <main>
+  <main class="container">
+    <div class="row">
+      <div class="col-lg-3 col-sm-5">
+        <form id="PlaylistForm">
 
-    <form id="PlaylistForm" >
-   
-      <!-- Artist name -->
-      <div class="container overflow-hidden">
-      <div class="row mb-3">
-          <div class="col-md-4">
-            <div class="artistName">
-              <label for="artistName" class="form-label">Artist name</label>
-              <input type="text" class="form-control" id="artistName" />
-            </div>
+          <!-- Artist name -->
+
+          <div class="artistName">
+            <label for="artistName" class="form-label">Artist name</label>
+            <input type="text" class="form-control" id="artistName" />
+
           </div>
 
           <!-- Song name input -->
-          <div class="col-md-4">
-            <div class="title">
-              <label for="title" class="form-label">Title</label>
-              <input type="text" class="form-control" id="title" />
-            </div>
+
+          <div class="title">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" />
+
           </div>
 
           <!-- Album name input -->
-          <div class="row mb-3">
-              <div class="col-md-4">
-                <div class="albumName">
-                  <label for="albumName" class="form-label">Album name</label>
-                  <input type="text" class="form-control" id="albumName" />
-                </div>
-              </div>
 
-              <!-- Genre input-->
-              <div class="col-md-4">
-                <div class="genre">
-                  <label for="genre" class="form-label">Genre name</label>
-                  <input type="text" class="form-control" id="genre" />
-                </div>
-              </div>
+          <div class="albumName">
+            <label for="albumName" class="form-label">Album name</label>
+            <input type="text" class="form-control" id="albumName" />
 
-              <!-- Release date input -->
-              <div class="row mb-3">
-                  <div class="col-sm-2">
-                    <div class="releaseDate">
-                      <label for="releaseDate" class="form-label">Release date</label>
-                      <input type="date" class="form-control" id="releaseDate" />
-                    </div>
-                  </div>
-                  <!-- Add to playlist button -->
-                  <div class="row mb-3"></div>
-                  <div class="col-sm-3">
-                    <button type="submit" class="btn btn-warning btn-block mb-3">Add to playlist</button>
-                  </form>
-                  <!-- Delete a song form -->
-                  <section>
-                    <h2>Delete a song</h2>
-                    <form id="deleteForm">
-                      <label for="songId">Id:</label>
-                      <input type="text" name="songId" id="songId">
-                      <button type="submit" class="btn btn-warning btn-block mb-5">Delete</button>
-                    </form>
-                    
-<!-- search bar -->
-      <h2>Search for a song</h2>
-      <form id="findSongForm">
-        <label for="artistId">Artist:</label>
-        <input type="text" name="artistId" id="artistId">
-        <label for="titleId">Title:</label>
-        <input type="text" name="titleId" id="titleId">
-        <label for="albumId">Album:</label>
-        <input type="text" name="albumId" id="albumId">
-        <label for="genreId">Genre:</label>
-        <input type="text" name="genreId" id="genreId">
-        <label for="releaseDateId">Release Date:</label>
-        <input type="date" name="releaseDateId" id="releaseDateId">
-        <button type="submit" class="btn btn-warning btn-block mb-5">Search</button>
-      </form>
-    </section>
-    <section>
-      <h2>Search Results</h2>
-      <div id="getOutput2">
-        <div id="getOutput3">
-          <div id="getOutput4">
-            <div id="getOutput5">
-              <div id="getOutput6"></div>
-            </div>
           </div>
-        </div>
+
+          <!-- Genre input-->
+
+          <div class="genre">
+            <label for="genre" class="form-label">Genre name</label>
+            <input type="text" class="form-control" id="genre" />
+
+          </div>
+
+          <!-- Release date input -->
+
+          <div class="releaseDate">
+            <label for="releaseDate" class="form-label">Release date</label>
+            <input type="date" class="form-control" id="releaseDate" />
+
+          </div>
+
+          <!-- Add to playlist button -->
+          <button type="submit" class="btn btn-warning btn-block mb-3">Add to playlist</button>
+        </form>
+
+
+        <section>
+          <h2>Get by genre</h2>
+          <form id="getByGenre">
+            <label for="songGenre">Genre:</label>
+            <input type="text" name="songGenre" id="getByGenre">
+            <button type="submit" class="btn btn-warning btn-block mb-5">Search</button>
+          </form>
+
+          <h2>Get by ID</h2>
+          <form id="songId">
+            <label for="songId">ID:</label>
+            <input type="text" name="songId" id="songId">
+            <button type="submit" class="btn btn-warning btn-block mb-5">Search</button>
+          </form>
+
+          <h2>Get by Title</h2>
+          <form id="getByTitle">
+            <label for="songTitle">Title:</label>
+            <input type="text" name="songTitle" id="songTitle">
+            <button type="submit" class="btn btn-warning btn-block mb-5">Search</button>
+          </form>
+
+          <!-- search bar -->
+          <form id="findSongForm">
+          </form>
       </div>
 
-      <h2>Playlist</h2>
-      <div id="getOutput"></div>
-              
+      <div class="col">
+        <section>
+          <h2>Playlist</h2>
+          <div id="getOutput" class="row row-cols-2 row-cols-lg-3 g-5"></div>
+      </div>
+    </div>
+  </main>
 
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <section>
+    <!-- Carousel -->
+    <div class="container">
+      <h2>Your top artists</h2>
+      <div id="myCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li class="item1 active"></li>
+          <li class="item2"></li>
+          <li class="item3"></li>
+
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+
+
+
+          <div class="item active">
+            <img src="../IMS Project 1/Camera Roll/tupac.jpg" alt="Tupac" width="460" height="345">
+            <div class="carousel-caption">
+              <h3>Tupac</h3>
+              <p>The legend himself!!</p>
+            </div>
+          </div>
+
+          <div class="item">
+            <img src="../IMS Project 1/Camera Roll/oasis.jpg" alt="Oasis" width="460" height="345">
+            <div class="carousel-caption">
+              <h3>Oasis</h3>
+              <p>Everyone loves a classic!</p>
+            </div>
+          </div>
+
+          <div class="item">
+            <img src="../IMS Project 1/Camera Roll/acdc.jpg" alt="ACDC" width="460" height="345">
+            <div class="carousel-caption">
+              <h3>ACDC</h3>
+              <p>For those about to rock! We salute you!</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" role="button">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        // Activate Carousel
+        $("#myCarousel").carousel();
+
+        // Enable Carousel Indicators
+        $(".item1").click(function () {
+          $("#myCarousel").carousel(0);
+        });
+        $(".item2").click(function () {
+          $("#myCarousel").carousel(1);
+        });
+        $(".item3").click(function () {
+          $("#myCarousel").carousel(2);
+        });
+        $(".item4").click(function () {
+          $("#myCarousel").carousel(3);
+        });
+
+        // Enable Carousel Controls
+        $(".left").click(function () {
+          $("#myCarousel").carousel("prev");
+        });
+        $(".right").click(function () {
+          $("#myCarousel").carousel("next");
+        });
+      });
+    </script>
+  </section>
+  </main>
+  <script src="./Hobby-Project.js"></script>
 </body>
 
 
