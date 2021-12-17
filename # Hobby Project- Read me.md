@@ -26,10 +26,15 @@ When using user stories, I try to fill these with as much information as possibl
 
 ![child tasks](https://user-images.githubusercontent.com/93253032/146449944-a071f456-b612-4822-884e-efcaf86cf2ed.png)
 
+![labels and annotations](https://user-images.githubusercontent.com/93253032/146513042-cb085a9f-60d8-49ae-a7ba-27956a3a4559.png)
+
+
 
 The next part of my planning phase was to set up 2 GitHub repositories. I created one for all back-end work and one for all front-end work. Within these 2 repo's I have stuck to the feature branch model. I made an initial commit to the main branch in both repo's and then started my branch models by creating a dev branch initially and then continuing with various other feature branches. I was also able to link my Jira board and my Git Repo's to enable me to do smart commits.
 
 ![feature branch model](https://user-images.githubusercontent.com/93253032/146454293-5029f40e-c005-4de9-ab85-798c13476143.png)
+
+![back-end branches](https://user-images.githubusercontent.com/93253032/146513232-d0101a22-4c70-473e-9916-f884b177c4cb.png)
 
 
 ## Database
@@ -37,6 +42,9 @@ The next part of my planning phase was to set up 2 GitHub repositories. I create
 Within the project we used 2 different types of database. The MySQL database was created by me and is the database used within the application. The other database used was an H2 database which is generated through the 2 .sql files within the Java project. These files autogenerate the and populate the database fields. This H2 database is essential as it is used for testsing that that the actual database is not effected whilst the system tests. 
 
 ![MySQL screenshot](https://user-images.githubusercontent.com/93253032/146450222-b6e95ba7-1220-4aae-ada8-e566cd51fad9.png)
+
+![image](https://user-images.githubusercontent.com/93253032/146513420-6615965e-ce3f-489b-9918-6df62b04ad9c.png)
+
 
 
 ## Back-end
